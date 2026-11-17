@@ -1,0 +1,17 @@
+{
+  "name": "khatt",
+  "owner": {
+    "name": "M-Alkassem",
+    "url": "https://github.com/M-Alkassem"
+  },
+  "metadata": {
+    "description": "Khatt: animated Arabic calligraphy, with a skill that lets Claude invent new effects."
+  },
+  "plugins": [
+    {
+      "name": "khatt",
+      "source": "./",
+      "description": "Animated Arabic calligraphy from any text, with twelve effects and the power to make new ones."
+    }
+  ]
+}

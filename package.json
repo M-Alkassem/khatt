@@ -1,0 +1,30 @@
+{
+  "name": "khatt",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Animated Arabic calligraphy in your browser, your terminal and Claude.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "build:skill": "vite build -c vite.cli.config.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --maxWorkers=2",
+    "gallery": "node scripts/gallery.ts",
+    "khatt": "node bin/khatt.ts"
+  },
+  "dependencies": {
+    "harfbuzzjs": "^1.6.4",
+    "mediabunny": "^1.66.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.0"
+  },
+  "bin": {
+    "khatt": "skills/khatt/scripts/khatt.mjs"
+  }
+}

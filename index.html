@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Khatt · خط · Animated Arabic calligraphy</title>
+    <meta name="description" content="Type a word and watch it written in animated Arabic calligraphy. Free, open source, runs in your browser." />
+    <meta name="theme-color" content="#f4ede0" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="top">
+      <a class="brand" href="./" aria-label="Khatt home">
+        <img class="brand-mark" src="./favicon.svg" alt="" width="34" height="34" />
+        <span class="brand-name">Khatt <span lang="ar">خط</span></span>
+      </a>
+      <p class="tagline">Animated Arabic calligraphy. Free and open source.</p>
+      <a class="github" href="https://github.com/M-Alkassem/khatt" target="_blank" rel="noopener">GitHub</a>
+    </header>
+
+    <main>
+      <section class="stage-wrap" aria-label="Preview">
+        <div class="stage" id="stage">
+          <img id="stage-img" alt="" />
+          <p class="stage-status" id="status" role="status"></p>
+        </div>
+        <div class="actions">
+          <button type="button" id="replay" class="ghost">Replay</button>
+          <span class="spacer"></span>
+          <button type="button" id="dl-svg">SVG</button>
+          <button type="button" id="dl-png">PNG</button>
+          <button type="button" id="dl-mp4">MP4</button>
+          <button type="button" id="copy-link" class="ghost">Copy link</button>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="Settings">
+        <label class="field field-text">
+          <span class="label">Your words <span lang="ar">كلماتك</span></span>
+          <textarea id="text" dir="auto" rows="2" spellcheck="false" maxlength="120">سلام</textarea>
+          <span class="hint">Arabic, Persian or Urdu. A new line starts a new row.</span>
+        </label>
+        <div class="field">
+          <span class="label">Style <span lang="ar">الخط</span></span>
+          <div class="chips" id="styles" role="radiogroup" aria-label="Calligraphy style"></div>
+        </div>
+        <div class="field">
+          <span class="label">Layout <span lang="ar">التكوين</span></span>
+          <div class="segmented" id="layouts" role="radiogroup" aria-label="Layout"></div>
+        </div>
+        <div class="field">
+          <span class="label">Colours <span lang="ar">الألوان</span></span>
+          <div class="swatches" id="palettes" role="radiogroup" aria-label="Colours"></div>
+        </div>
+      </section>
+
+      <section class="gallery" aria-labelledby="effects-title">
+        <h2 id="effects-title">Effects <span lang="ar">المؤثرات</span></h2>
+        <div class="grid" id="effects" role="radiogroup" aria-label="Effect"></div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>
+        Want an effect that isn't here? Ask Claude with the
+        <a href="https://github.com/M-Alkassem/khatt#make-your-own-effect-with-claude" target="_blank" rel="noopener">Khatt skill</a>.
+      </p>
+      <p class="small">
+        Fonts: Aref Ruqaa, Amiri, Reem Kufi, Noto Nastaliq Urdu, Alkalami and Blaka, all under the SIL Open Font
+        License. Everything runs in your browser; nothing is uploaded.
+      </p>
+    </footer>
+    <script type="module" src="./src/web/main.ts"></script>
+  </body>
+</html>
