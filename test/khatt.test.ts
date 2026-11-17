@@ -157,6 +157,13 @@ describe("effects", () => {
     }
   });
 
+  it("can frame any word in a fixed shape", async () => {
+    for (const text of ["أ", "بسم الله الرحمن الرحيم"]) {
+      const out = await khatt.render({ text, aspect: 1.5 });
+      expect(out.width / out.height).toBeCloseTo(1.5, 1);
+    }
+  });
+
   it("freezes on any frame", async () => {
     const out = await khatt.render({ text: "قف", effect: "ink" });
     const still = freezeAt(out.svg, 1.25);

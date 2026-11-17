@@ -16,6 +16,7 @@ export interface RenderOptions {
   seek?: number;
   size?: number;
   seed?: number;
+  aspect?: number;
 }
 
 export type FontLoader = (file: string) => Promise<ArrayBuffer | Uint8Array>;
@@ -46,7 +47,7 @@ export class Khatt {
     const palette =
       typeof opts.palette === "object" ? opts.palette : paletteById(opts.palette ?? effect.palette);
     const scene = layout(opts.layout ?? "line", font.shape(text));
-    return compose(scene, effect, palette, { title: text, seek: opts.seek, size: opts.size, seed: opts.seed });
+    return compose(scene, effect, palette, { title: text, seek: opts.seek, size: opts.size, seed: opts.seed, aspect: opts.aspect });
   }
 }
 

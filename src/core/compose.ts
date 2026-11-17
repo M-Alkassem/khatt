@@ -15,6 +15,8 @@ export interface ComposeOptions {
   size?: number;
   /** Extra room around the text, in em. */
   margin?: number;
+  /** Widen or heighten the canvas to this width/height ratio, keeping the text centred. */
+  aspect?: number;
 }
 
 export interface Composed {
@@ -60,6 +62,19 @@ export function compose(scene: Scene, effect: Effect, palette: Palette, opts: Co
   const margin = (opts.margin ?? 0.45) * EM;
   const box = scene.box;
   const view: Box = { x0: box.x0 - margin, y0: box.y0 - margin, x1: box.x1 + margin, y1: box.y1 + margin };
+  if (opts.aspect) {
+    const vw = view.x1 - view.x0;
+    const vh = view.y1 - view.y0;
+    if (vw / vh < opts.aspect) {
+      const grow = (vh * opts.aspect - vw) / 2;
+      view.x0 -= grow;
+      view.x1 += grow;
+    } else {
+      const grow = (vw / opts.aspect - vh) / 2;
+      view.y0 -= grow;
+      view.y1 += grow;
+    }
+  }
   const areas = new Map<object, number>();
 
   const ctx: EffectContext = {

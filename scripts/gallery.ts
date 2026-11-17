@@ -26,11 +26,11 @@ const effects: [string, string, string, string?][] = [
 const save = async (name: string, svg: string) => writeFile(new URL(name, out), svg);
 
 for (const [effect, text, style] of effects) {
-  const r = await khatt.render({ text, effect, style, size: 640 });
+  const r = await khatt.render({ text, effect, style, size: 640, aspect: 1.5 });
   await save(`${effect}.svg`, r.svg);
 }
 
-const hero = await khatt.render({ text: "خط", effect: "ink", style: "ruqaa", size: 900 });
+const hero = await khatt.render({ text: "خط", effect: "ink", style: "ruqaa", size: 900, aspect: 1.25 });
 await save("hero.svg", hero.svg);
 
 for (const [layout, text, effect] of [
@@ -38,12 +38,12 @@ for (const [layout, text, effect] of [
   ["circle", "سبحان الله", "ink"],
   ["mirror", "نور", "gold"],
 ] as const) {
-  const r = await khatt.render({ text, layout, effect, style: layout === "circle" ? "naskh" : "ruqaa", size: 640 });
+  const r = await khatt.render({ text, layout, effect, style: layout === "circle" ? "naskh" : "ruqaa", size: 640, aspect: 1 });
   await save(`layout-${layout}.svg`, r.svg);
 }
 
 for (const style of STYLES) {
-  const r = await khatt.render({ text: "كمنجير", style: style.id, effect: "ink", palette: "paper", size: 480 });
+  const r = await khatt.render({ text: "كمنجير", style: style.id, effect: "ink", palette: "paper", size: 480, aspect: 1.5 });
   await save(`style-${style.id}.svg`, freezeAt(r.svg, r.poster));
 }
 console.log("Gallery written to docs/gallery/");

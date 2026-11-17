@@ -2470,6 +2470,19 @@ function compose(scene, effect, palette, opts) {
 		x1: box.x1 + margin,
 		y1: box.y1 + margin
 	};
+	if (opts.aspect) {
+		const vw = view.x1 - view.x0;
+		const vh = view.y1 - view.y0;
+		if (vw / vh < opts.aspect) {
+			const grow = (vh * opts.aspect - vw) / 2;
+			view.x0 -= grow;
+			view.x1 += grow;
+		} else {
+			const grow = (vw / opts.aspect - vh) / 2;
+			view.y0 -= grow;
+			view.y1 += grow;
+		}
+	}
 	const areas = /* @__PURE__ */ new Map();
 	const ctx = {
 		pieces: scene.pieces,
@@ -3146,7 +3159,8 @@ var Khatt = class {
 			title: text,
 			seek: opts.seek,
 			size: opts.size,
-			seed: opts.seed
+			seed: opts.seed,
+			aspect: opts.aspect
 		});
 	}
 };
